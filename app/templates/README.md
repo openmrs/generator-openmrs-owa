@@ -13,7 +13,7 @@ For further documentation about OpenMRS Open Web Apps see
 
 ### Production Build
 
-You will need NodeJS 4+ installed to do this. See the install instructions [here](https://nodejs.org/en/download/package-manager/).
+You will need NodeJS 6+ installed to do this. See the install instructions [here](https://nodejs.org/en/download/package-manager/).
 
 Once you have NodeJS installed, install the dependencies (first time only):
 
