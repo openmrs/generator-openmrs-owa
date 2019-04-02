@@ -27,7 +27,13 @@ const WebpackOnBuildPlugin = require('on-build-webpack');
 
 const nodeModulesDir = path.resolve(__dirname, '../node_modules');
 
+require.extensions['.webapp'] = function (module, filename) {
+  module.exports = fs.readFileSync(filename, 'utf8');
+};
+const manifest = require('./app/manifest.webapp');
+
 const THIS_APP_ID = '<%= appId %>';
+const THIS_APP_VER = JSON.parse(manifest).version;
 
 var plugins = [];
 const nodeModules = {};
@@ -95,7 +101,7 @@ if (env === 'production') {
 	  plugins.push(new WebpackOnBuildPlugin(function(stats){
       //create zip file
       var archiver = require('archiver');
-			var output = fs.createWriteStream(THIS_APP_ID+'.zip');
+			var output = fs.createWriteStream(THIS_APP_ID+'_'+THIS_APP_VER+'.zip');
 			var archive = archiver('zip');
 
 			output.on('close', function () {
