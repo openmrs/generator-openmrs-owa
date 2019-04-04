@@ -42,6 +42,8 @@ let outputFile = `.bundle`;
 let vendorOutputFile;
 let outputPath;
 
+const packageIncludesVersionNumber = true;
+
 var configJson;
 let appEntryPoint;
 let localOwaFolder;
@@ -101,7 +103,8 @@ if (env === 'production') {
 	  plugins.push(new WebpackOnBuildPlugin(function(stats){
       //create zip file
       var archiver = require('archiver');
-			var output = fs.createWriteStream(THIS_APP_ID+'_'+THIS_APP_VER+'.zip');
+			const outputFilename = (packageIncludesVersionNumber) ? THIS_APP_ID+'_'+THIS_APP_VER+'.zip' : THIS_APP_ID+'_'+'.zip';
+			var output = fs.createWriteStream(outputFilename);
 			var archive = archiver('zip');
 
 			output.on('close', function () {
