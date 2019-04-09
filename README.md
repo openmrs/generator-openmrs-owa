@@ -16,6 +16,7 @@ The following features are currently supported:
   - [x] Scaffold basic OWA folder structure and files
   - [x] Production build with [Webpack](https://webpack.github.io/)
   - [x] Local deploy with Webpack
+  - [x] Toggle OWA version number in filename
   - [x] Package management with [npm](http://npmjs.com/)
   - [x] Live reload, interaction sync and more with [Browsersync](https://www.browsersync.io/)
 
@@ -56,6 +57,13 @@ entry: {
   ]
 },
 ````
+
+To include OWA version number in package:
+````
+const packageIncludesVersionNumber = true;
+````
+In webpack.config.js
+
 
 Any files that you add manually must be added in the `app` directory.
 
